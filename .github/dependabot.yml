@@ -86,3 +86,93 @@ updates:
     # Add assignees
     assignees:
       - lukeheath
+
+  - package-ecosystem: npm
+    directory: /ee/fleetd-chrome
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /ee/tools/license
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /infrastructure/loadtesting/terraform/docker
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /infrastructure/sandbox/JITProvisioner/deprovisioner
+    schedule:
+      interval: daily
+
+  - package-ecosystem: gomod
+    directory: /infrastructure/sandbox/JITProvisioner/deprovisioner
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /infrastructure/sandbox/JITProvisioner/lambda
+    schedule:
+      interval: daily
+
+  - package-ecosystem: gomod
+    directory: /infrastructure/sandbox/JITProvisioner/lambda
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /infrastructure/sandbox/Monitoring/lambda
+    schedule:
+      interval: daily
+
+  - package-ecosystem: gomod
+    directory: /infrastructure/sandbox/Monitoring/lambda
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /infrastructure/sandbox/PreProvisioner/lambda
+    schedule:
+      interval: daily
+
+  - package-ecosystem: gomod
+    directory: /infrastructure/sandbox/PreProvisioner/lambda
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /orbit/tools/ubuntu
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /tools/bomutils-docker
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /tools/fleet-docker
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /tools/fleetctl-docker
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /tools/fleetctl-npm
+    schedule:
+      interval: daily
+
+  - package-ecosystem: gomod
+    directory: /tools/mdm/windows/poc-mdm-server
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /tools/wix-docker
+    schedule:
+      interval: daily

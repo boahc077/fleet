@@ -31,6 +31,11 @@ jobs:
       subdomain: ${{ steps.gen.outputs.subdomain }}
       address: ${{ steps.gen.outputs.address }}
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - id: gen
       run: |
         UUID=$(uuidgen)
@@ -41,6 +46,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: gen
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - name: Start tunnel
       env:
         CERT_PEM: ${{ secrets.CLOUDFLARE_TUNNEL_FLEETUEM_CERT_B64 }}
@@ -121,6 +131,11 @@ jobs:
      token: ${{ steps.login.outputs.token }}
    steps:
     # Download fleet and fleetctl binaries from last successful build on main
+    - name: Harden Runner
+      uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - name: Download binaries
       uses: dawidd6/action-download-artifact@5e780fc7bbd0cac69fc73271ed86edf5dcb72d67
       with:
@@ -154,6 +169,11 @@ jobs:
     runs-on: macos-latest
     needs: [gen, login]
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - name: Checkout Code
       uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v2
 
@@ -205,6 +225,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [gen, login]
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - name: Install dependencies
       run: |
         npm install -g fleetctl
@@ -265,6 +290,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [gen, login]
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - name: Install dependencies
       run: |
         docker pull fleetdm/wix:latest &
@@ -296,6 +326,11 @@ jobs:
     needs: [gen, login, orbit-windows-build]
     runs-on: windows-latest
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - name: Install dependencies
       shell: bash
       run: |

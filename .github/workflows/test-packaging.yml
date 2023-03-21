@@ -50,6 +50,11 @@ jobs:
     # Docker needs to be installed manually on macOS.
     # From https://github.com/docker/for-mac/issues/2359#issuecomment-943131345
     # FIXME: lock Docker version to 4.10.0 as newer versions fail to initialize
+    - name: Harden Runner
+      uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - name: Install Docker
       timeout-minutes: 20
       if: matrix.os == 'macos-latest'

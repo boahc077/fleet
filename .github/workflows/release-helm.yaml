@@ -24,6 +24,11 @@ jobs:
       contents: write  # to push helm charts
     runs-on: ubuntu-20.04
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v2
     - uses: stefanprodan/helm-gh-pages@0ad2bb377311d61ac04ad9eb6f252fb68e207260
       with:
